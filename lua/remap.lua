@@ -23,3 +23,5 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#<CR>")
+
+vim.keymap.set("n", "<leader><leader>", "<cmd>:w<CR>")

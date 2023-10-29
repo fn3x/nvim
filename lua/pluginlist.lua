@@ -26,6 +26,10 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.install").prefer_git = false
+			require("nvim-treesitter.install").compilers = { "clang", "gcc" }
+		end,
 	},
 	{
 		'nvim-telescope/telescope.nvim',
@@ -68,4 +72,5 @@ return {
 		"sainnhe/gruvbox-material",
 		config = function() vim.cmd.colorscheme("gruvbox-material") end
 	},
+	"lewis6991/gitsigns.nvim",
 }
