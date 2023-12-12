@@ -31,6 +31,7 @@ mason_lspconfig.setup({
 
 mason_tool_installer.setup({
   ensure_installed = {
+    "prettierd", -- prettier (fast) formatter
     "prettier", -- prettier formatter
     "stylua", -- lua formatter
     "gofumpt", -- go formatter

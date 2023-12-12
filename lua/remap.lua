@@ -12,10 +12,10 @@ keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-keymap.set({"n", "v"}, "<leader>y", [["+y]])
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- map jk to escape
-keymap.set("i", 'jk', '<ESC>')
+keymap.set("i", "jk", "<ESC>")
 
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")

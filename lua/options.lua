@@ -8,11 +8,10 @@ vim.o.relativenumber = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
-vim.o.smartindent = false
 vim.o.expandtab = true
-vim.g.expandtab = true
-
+vim.o.smartindent = true
 vim.o.updatetime = 300
+vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,i:blinkwait500-blinkoff400-blinkon500-Cursor/lCursor"
 
 vim.o.termguicolors = true
 
@@ -41,11 +40,14 @@ vim.o.colorcolumn = "120"
 
 vim.o.splitright = true
 
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:full,full"
+
 if vim.g.neovide then
-	vim.o.guifont = "Berkeley Mono Variable"
-	vim.g.neovide_scale_factor = 1.2
-	vim.g.neovide_transparency = 15.55
-	vim.g.neovide_refresh_rate = 170
-	vim.g.neovide_remember_window_size = true
-	vim.g.neovide_cursor_trail_size = 0.5
+  vim.o.guifont = "Berkeley Mono Variable"
+  vim.g.neovide_scale_factor = 1.2
+  vim.g.neovide_transparency = 15.55
+  vim.g.neovide_refresh_rate = 170
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_cursor_trail_size = 0.5
 end
