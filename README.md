@@ -1,4 +1,4 @@
-# nvim-config
+# nvim
 My neovim config containing configured packages like treesitter, lsp, telescope, harpoon, etc.
 
 ## Requirements
