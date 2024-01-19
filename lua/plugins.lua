@@ -13,5 +13,22 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
-require("lazy").setup("pluginlist")
-require("remap")
+require("lazy").setup("fn3x.plugins", {
+  performance = {
+    cache = {
+      enabled = true,
+    },
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        "rplugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+  change_detection = { enabled = false },
+})
