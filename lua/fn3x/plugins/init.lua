@@ -13,9 +13,9 @@ return {
   },
   {
     "tpope/vim-fugitive",
-    keys = {
-      { "<leader>gs", vim.cmd.Git, desc = "[G]it [s]tatus" },
-    },
+    config = function()
+      vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+    end,
   },
   {
     "ThePrimeagen/refactoring.nvim",
@@ -40,5 +40,8 @@ return {
   {
     "stevearc/dressing.nvim",
     opts = {},
+  },
+  {
+    "lbrayner/vim-rzip",
   },
 }
