@@ -30,7 +30,7 @@ vim.o.wrap = false
 
 vim.o.swapfile = false
 vim.o.backup = false
-vim.o.undodir = "C://Users/Art/.vim/undodir"
+vim.o.undodir = "C:/.vim/undodir"
 vim.o.undofile = true
 
 vim.o.hlsearch = false
@@ -51,7 +51,7 @@ vim.o.wildmode = "longest:full,full"
 vim.g.loaded_node_provider = 0
 
 if vim.g.neovide then
-  vim.o.guifont = "Berkeley Mono Variable"
+  vim.o.guifont = "Berkeley Mono"
   vim.g.neovide_scale_factor = 1.2
   vim.g.neovide_refresh_rate = 75
   vim.g.neovide_remember_window_size = true
