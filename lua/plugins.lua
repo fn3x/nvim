@@ -21,12 +21,9 @@ require("lazy").setup("fn3x.plugins", {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
-        "gzip",
         "rplugin",
-        "tarPlugin",
         "tohtml",
         "tutor",
-        "zipPlugin",
       },
     },
   },

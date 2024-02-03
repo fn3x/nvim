@@ -30,7 +30,7 @@ vim.o.wrap = false
 
 vim.o.swapfile = false
 vim.o.backup = false
-vim.o.undodir = "C:/.vim/undodir"
+vim.o.undodir = "~/.undodir"
 vim.o.undofile = true
 
 vim.o.hlsearch = false
