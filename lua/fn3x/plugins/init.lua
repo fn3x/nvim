@@ -3,6 +3,7 @@ return {
     "sainnhe/gruvbox-material",
     priority = 1000,
     config = function()
+      vim.cmd([[autocmd! ColorScheme * highlight FloatBorder ctermbg=NONE guibg=NONE ]])
       vim.cmd.colorscheme("gruvbox-material")
     end,
   },
@@ -40,8 +41,5 @@ return {
   {
     "stevearc/dressing.nvim",
     opts = {},
-  },
-  {
-    "lbrayner/vim-rzip",
-  },
+  }
 }

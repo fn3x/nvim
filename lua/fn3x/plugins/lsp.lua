@@ -7,19 +7,19 @@ return {
     "williamboman/mason.nvim",
 
     -- Autocompletion
-    "hrsh7th/cmp-buffer", -- Required
-    "hrsh7th/cmp-path", -- Required
-    "hrsh7th/cmp-cmdline", -- Required
-    "hrsh7th/nvim-cmp", -- Required
-    "hrsh7th/cmp-nvim-lsp", -- Required
+    "hrsh7th/cmp-buffer",                  -- Required
+    "hrsh7th/cmp-path",                    -- Required
+    "hrsh7th/cmp-cmdline",                 -- Required
+    "hrsh7th/nvim-cmp",                    -- Required
+    "hrsh7th/cmp-nvim-lsp",                -- Required
     "hrsh7th/cmp-nvim-lsp-signature-help", -- Required
 
     -- Snippets
-    "L3MON4D3/LuaSnip", -- Required
-    "saadparwaiz1/cmp_luasnip", -- Required
+    "L3MON4D3/LuaSnip",             -- Required
+    "saadparwaiz1/cmp_luasnip",     -- Required
     "rafamadriz/friendly-snippets", -- Required
 
-    "onsails/lspkind.nvim", -- Optional
+    "onsails/lspkind.nvim",         -- Optional
 
     -- LSP events notifier
     {
@@ -94,8 +94,8 @@ return {
         fields = { "abbr", "kind", "menu" },
         format = lspkind.cmp_format({
           preset = "codicons",
-          mode = "symbol_text", -- show only symbol annotations
-          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          mode = "symbol_text",  -- show only symbol annotations
+          maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),
       },
@@ -167,9 +167,6 @@ return {
         end, opts)
       end,
     })
-
-    vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guifg=gray guibg=#1f2335]])
-    vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=red guibg=#1f2335 ]])
 
     lspconfig.gopls.setup({
       settings = {

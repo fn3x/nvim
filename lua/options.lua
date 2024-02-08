@@ -30,7 +30,7 @@ vim.o.wrap = false
 
 vim.o.swapfile = false
 vim.o.backup = false
-vim.o.undodir = "~/.undodir"
+vim.o.undodir = "/home/fn3x/.config/.undodir"
 vim.o.undofile = true
 
 vim.o.hlsearch = false
@@ -48,24 +48,4 @@ vim.o.splitright = true
 vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"
 
-vim.g.loaded_node_provider = 0
-
-if vim.g.neovide then
-  vim.o.guifont = "Berkeley Mono"
-  vim.g.neovide_scale_factor = 1.2
-  vim.g.neovide_refresh_rate = 75
-  vim.g.neovide_remember_window_size = true
-  vim.g.neovide_cursor_trail_size = 0.5
-  vim.g.neovide_scroll_animation_far_lines = 0
-
-  -- Helper function for transparency formatting
-  local alpha = function()
-    return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8))
-  end
-
-  -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_transparency = 0.95
-  vim.g.transparency = 1
-  vim.g.neovide_background_color = "#0f1117" .. alpha()
-  vim.g.neovide_scroll_animation_length = 0
-end
+vim.o.termguicolors = true
