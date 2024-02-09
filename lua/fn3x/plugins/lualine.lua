@@ -23,17 +23,18 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_b = { "branch", "diagnostics" },
         lualine_c = {
           {
             "filename",
             file_status = true,
             path = 1,
+            shorting_target = 60,
             symbols = {
-              modified = "[+]", -- Text to show when the file is modified.
-              readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+              modified = "[+]",      -- Text to show when the file is modified.
+              readonly = "[-]",      -- Text to show when the file is non-modifiable or readonly.
               unnamed = "[No Name]", -- Text to show for unnamed buffers.
-              newfile = "[New]", -- Text to show for newly created file before first write
+              newfile = "[New]",     -- Text to show for newly created file before first write
             },
           },
         },
@@ -44,10 +45,10 @@ return {
             color = { fg = "#ff9e64" },
           },
           "encoding",
-          "fileformat",
+          -- "fileformat",
           "filetype",
         },
-        lualine_y = { "progress" },
+        lualine_y = {},
         lualine_z = { "location" },
       },
       inactive_sections = {
