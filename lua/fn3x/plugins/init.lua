@@ -3,8 +3,9 @@ return {
     "sainnhe/gruvbox-material",
     priority = 1000,
     config = function()
-      vim.cmd([[autocmd! ColorScheme * highlight FloatBorder ctermbg=NONE guibg=NONE ]])
       vim.cmd.colorscheme("gruvbox-material")
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", ctermbg = "none", ctermfg = "none" })
     end,
   },
   {

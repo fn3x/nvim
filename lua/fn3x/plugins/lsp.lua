@@ -9,7 +9,6 @@ return {
     -- Autocompletion
     "hrsh7th/cmp-buffer",                  -- Required
     "hrsh7th/cmp-path",                    -- Required
-    "hrsh7th/cmp-cmdline",                 -- Required
     "hrsh7th/nvim-cmp",                    -- Required
     "hrsh7th/cmp-nvim-lsp",                -- Required
     "hrsh7th/cmp-nvim-lsp-signature-help", -- Required
@@ -87,6 +86,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lsp_signature_help" },
+        { name = 'path' }
       }, {
         { name = "buffer" },
       }),
@@ -99,24 +99,6 @@ return {
           ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),
       },
-    })
-
-    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" },
-      },
-    })
-
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
     })
 
     -- Use LspAttach autocommand to only map the following keys
@@ -162,7 +144,7 @@ return {
         vim.keymap.set("n", "<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-        vim.keymap.set({ "n", "x", "v" }, "gq", function()
+        vim.keymap.set({ "n", "x", "v" }, "<leader>ff", function()
           vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
         end, opts)
       end,
@@ -218,7 +200,7 @@ return {
         format = nil,
       },
       signs = true,
-      update_in_insert = true,
+      update_in_insert = false,
     })
   end,
 }

@@ -45,7 +45,11 @@ vim.o.colorcolumn = "120"
 
 vim.o.splitright = true
 
-vim.o.wildmenu = true
-vim.o.wildmode = "longest:full,full"
+vim.o.wildmenu = false
+vim.o.wildmode = ""
+vim.g.pumheight = 5
 
 vim.o.termguicolors = true
+
+-- change to false for formatting on saving
+vim.g.disable_autoformat = true
