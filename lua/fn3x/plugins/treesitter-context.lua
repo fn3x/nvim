@@ -6,11 +6,9 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
-    require("nvim-treesitter.install").prefer_git = false
-    require("nvim-treesitter.install").compilers = { "clang", "gcc" }
     require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
-      ensure_installed = { "javascript", "typescript", "lua", "rust" },
+      ensure_installed = { "javascript", "typescript", "lua", "rust", "go" },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
