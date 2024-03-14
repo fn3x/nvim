@@ -31,7 +31,7 @@ return {
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
 
-    vim.keymap.set("n", ";;", function()
+    vim.keymap.set("n", "<leader>;", function()
       builtin.resume()
     end)
   end,
