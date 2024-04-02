@@ -16,11 +16,9 @@ return {
 
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-    vim.keymap.set("n", "<leader>fr", builtin.git_branches, {})
-    vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+    vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
     vim.keymap.set("n", "<C-g>", builtin.git_status, {})
     vim.keymap.set("n", "<C-H>", builtin.git_commits, {})
     vim.keymap.set("n", "<C-s>", builtin.grep_string, {})
