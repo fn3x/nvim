@@ -10,8 +10,6 @@ map("n", "<leader>fp", vim.cmd.Ex, "View filetree")
 map("v", "K", ":m '<-2<CR>gv=gv", "Move line up by 1 line and format it")
 map("v", "J", ":m '>+1<CR>gv=gv", "Move line down by 1 line and format it")
 
-map("i", "<Tab>", "<Esc>")
-
 -- movement
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center")
 map("n", "<C-u>", "<C-u>zz", "Scroll up and center")
