@@ -174,6 +174,10 @@ return {
 
     lspconfig.ols.setup({})
 
+    lspconfig.sourcekit.setup({
+      cmd = { '~/swift/usr/bin/sourcekit-lsp' }
+    })
+
     local _border = "single"
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -187,6 +191,23 @@ return {
       style = "minimal",
       source = "always",
     })
+
+    local servers = {
+      clangd = {},
+      sourcekit = {
+        root_dir = lspconfig.util.root_pattern(
+          '.git',
+          'Package.swift',
+          'compile_commands.json'
+        ),
+      },
+      lspconfig.rust_analyzer.setup {}
+    }
+
+    for server, setup in pairs(servers) do
+      setup.handlers = vim.lsp.handlers
+      lspconfig[server].setup(setup)
+    end
 
     vim.diagnostic.config({
       float = {

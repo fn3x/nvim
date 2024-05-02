@@ -8,7 +8,7 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
-      ensure_installed = { "javascript", "typescript", "lua", "rust", "go", "odin" },
+      ensure_installed = { "javascript", "typescript", "lua", "rust", "go", "odin", "swift" },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -75,7 +75,7 @@ return {
             ["al"] = "@loop.outer",
             ["il"] = "@loop.inner",
             ["a/"] = "@comment.outer",
-            ["i/"] = "@comment.outer", -- no inner for comment
+            ["i/"] = "@comment.outer",   -- no inner for comment
             ["aa"] = "@parameter.outer", -- parameter -> argument
             ["ia"] = "@parameter.inner",
           },
