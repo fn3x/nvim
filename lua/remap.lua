@@ -5,7 +5,8 @@ local function map(mode, lhs, rhs, desc, opts)
 end
 
 -- filetree
-map("n", "<leader>fp", vim.cmd.Ex, "View filetree")
+map("n", "<leader>fp", "<CMD>Oil<CR>", "Open parent directory")
+map("n", "<Esc>", "<CMD>nohlsearch<CR>")
 
 map("v", "K", ":m '<-2<CR>gv=gv", "Move line up by 1 line and format it")
 map("v", "J", ":m '>+1<CR>gv=gv", "Move line down by 1 line and format it")
