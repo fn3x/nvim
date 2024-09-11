@@ -40,10 +40,11 @@ return {
 
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "tsserver",
+        "ts_ls",
         "gopls",
         "lua_ls",
         "rust_analyzer",
+        "zls"
       },
       handlers = {
         function(server_name)
@@ -172,7 +173,8 @@ return {
       },
     })
 
-    lspconfig.ols.setup({})
+    lspconfig.zls.setup({})
+    lspconfig.ts_ls.setup({})
 
     lspconfig.sourcekit.setup({
       cmd = { '~/swift/usr/bin/sourcekit-lsp' }
