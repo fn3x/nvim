@@ -44,14 +44,60 @@ return {
         "gopls",
         "lua_ls",
         "rust_analyzer",
+        "tailwindcss",
+        "html",
+        "templ",
         "zls"
       },
       handlers = {
         function(server_name)
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
+          local lspconfig = require("lspconfig")
+          if server_name == "gopls" then
+            lspconfig.gopls.setup({
+              settings = {
+                gopls = {
+                  gofumpt = true,
+                },
+              },
+            })
+          elseif server_name == "lua_ls" then
+            lspconfig.lua_ls.setup({
+              settigns = {
+                Lua = {
+                  diagnostic = {
+                    globals = {
+                      "vim",
+                    },
+                  },
+                },
+              },
+            })
+          elseif server_name == "ts_ls" then
+            lspconfig.ts_ls.setup({
+              filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+            })
+          elseif server_name == "tailwindcss" then
+            lspconfig.tailwindcss.setup({
+              filetypes = { "templ", "html" },
+              settings = {
+                tailwindCSS = {
+                  includeLanguages = {
+                    templ = "html",
+                  },
+                },
+              },
+            })
+          elseif server_name == "sourcekit" then
+          lspconfig.sourcekit.setup({
+            cmd = { '~/swift/usr/bin/sourcekit-lsp' }
           })
+          elseif server_name == "ols" then
+            lspconfig.ols.setup({})
+          else
+            require("lspconfig")[server_name].setup({
+              capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
+          end
         end,
       },
     })
@@ -151,33 +197,6 @@ return {
           vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
         end, opts)
       end,
-    })
-
-    lspconfig.gopls.setup({
-      settings = {
-        gopls = {
-          gofumpt = true,
-        },
-      },
-    })
-
-    lspconfig.lua_ls.setup({
-      settigns = {
-        Lua = {
-          diagnostic = {
-            globals = {
-              "vim",
-            },
-          },
-        },
-      },
-    })
-
-    lspconfig.zls.setup({})
-    lspconfig.ts_ls.setup({})
-
-    lspconfig.sourcekit.setup({
-      cmd = { '~/swift/usr/bin/sourcekit-lsp' }
     })
 
     local _border = "single"
