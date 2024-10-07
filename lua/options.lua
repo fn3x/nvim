@@ -31,9 +31,6 @@ vim.g.gruvbox_material_float_style = "high"
 
 vim.opt.mouse = ""
 
-vim.opt.swapfile = false
-vim.opt.shada = { "!", "'1000", "<50", "s10", "h" }
-vim.opt.backup = false
 vim.opt.undodir = "/home/fn3x/.config/.undodir"
 vim.opt.undofile = true
 
@@ -59,3 +56,4 @@ vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:mi
 
 -- change to false for formatting on saving
 vim.g.disable_autoformat = true
+vim.g.loaded_node_provider = 0
