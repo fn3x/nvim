@@ -18,6 +18,7 @@ return {
 
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fz", builtin.find_files, {})
     vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
     vim.keymap.set("n", "<C-g>", builtin.git_status, {})
     vim.keymap.set("n", "<C-H>", builtin.git_commits, {})
