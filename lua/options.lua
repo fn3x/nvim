@@ -19,16 +19,7 @@ vim.opt.updatetime = 1000
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,i:blinkwait500-blinkoff400-blinkon500-Cursor/lCursor"
 
 -- Colorscheme options --
-vim.colorscheme = "gruvbox-material"
 vim.o.termguicolors = true
-vim.g.gruvbox_material_background = "medium"
-vim.g.gruvbox_material_better_performance = 1
-vim.g.gruvbox_material_enable_bold = 0
-vim.g.gruvbox_material_menu_selection_background = "aqua"
-vim.g.gruvbox_material_visual = "blue background"
-vim.g.gruvbox_material_foreground = "material"
-vim.g.gruvbox_material_float_style = "high"
-
 vim.opt.mouse = ""
 
 vim.opt.undodir = "/home/fn3x/.config/.undodir"
