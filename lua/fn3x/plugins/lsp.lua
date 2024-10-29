@@ -19,12 +19,6 @@ return {
     "rafamadriz/friendly-snippets", -- Required
 
     "onsails/lspkind.nvim",         -- Optional
-
-    -- LSP events notifier
-    {
-      "j-hui/fidget.nvim", -- Optional
-      opts = {},
-    },
   },
   config = function()
     -- enable mason and configure icons
