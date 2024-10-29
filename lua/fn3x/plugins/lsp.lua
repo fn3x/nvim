@@ -72,19 +72,28 @@ return {
             })
           elseif server_name == "tailwindcss" then
             lspconfig.tailwindcss.setup({
-              filetypes = { "templ", "html" },
+              filetypes = { "templ", "html", "go" },
               settings = {
                 tailwindCSS = {
                   includeLanguages = {
                     templ = "html",
+                    go = "html"
                   },
+                  experimental = {
+                    classRegex = {
+                      { "Class\\(([^)]*)\\)",   "[\"`]([^\"`]*)[\"`]" },
+                      { "ClassX\\(([^)]*)\\)",  "[\"`]([^\"`]*)[\"`]" },
+                      { "ClassIf\\(([^)]*)\\)", "[\"`]([^\"`]*)[\"`]" },
+                      { "Classes\\(([^)]*)\\)", "[\"`]([^\"`]*)[\"`]" }
+                    }
+                  }
                 },
               },
             })
           elseif server_name == "sourcekit" then
-          lspconfig.sourcekit.setup({
-            cmd = { '~/swift/usr/bin/sourcekit-lsp' }
-          })
+            lspconfig.sourcekit.setup({
+              cmd = { '~/swift/usr/bin/sourcekit-lsp' }
+            })
           elseif server_name == "ols" then
             lspconfig.ols.setup({})
           else
