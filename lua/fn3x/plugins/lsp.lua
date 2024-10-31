@@ -106,6 +106,7 @@ return {
     })
 
     require("luasnip.loaders.from_vscode").lazy_load()
+    local luasnip = require("luasnip")
 
     local cmp = require("cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -116,6 +117,20 @@ return {
       ["<C-y>"] = cmp.mapping.complete(),
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      ["<C-l>"] = cmp.mapping(function (fallback)
+        if luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<C-h>"] = cmp.mapping(function (fallback)
+        if luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
     })
 
     local lspkind = require("lspkind")
@@ -124,7 +139,7 @@ return {
     cmp.setup({
       snippet = {
         expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+          luasnip.lsp_expand(args.body)
         end,
       },
       window = {

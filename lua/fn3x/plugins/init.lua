@@ -37,6 +37,10 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {},
+    lazy = false,
+    config = function ()
+      require("refactoring").setup()
+    end
   },
   {
     "mbbill/undotree",
