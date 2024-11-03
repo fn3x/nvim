@@ -117,14 +117,14 @@ return {
       ["<C-y>"] = cmp.mapping.complete(),
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ["<C-l>"] = cmp.mapping(function (fallback)
+      ["<C-,>"] = cmp.mapping(function (fallback)
         if luasnip.locally_jumpable(1) then
           luasnip.jump(1)
         else
           fallback()
         end
       end, { "i", "s" }),
-      ["<C-h>"] = cmp.mapping(function (fallback)
+      ["<C-.>"] = cmp.mapping(function (fallback)
         if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
