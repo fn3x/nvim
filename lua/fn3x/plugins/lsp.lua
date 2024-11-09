@@ -223,12 +223,14 @@ return {
       border = _border,
       style = "minimal",
       source = "always",
+      silent = true,
     })
 
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = _border,
       style = "minimal",
       source = "always",
+      silent = true,
     })
 
     local servers = {
