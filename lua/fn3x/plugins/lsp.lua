@@ -40,7 +40,6 @@ return {
         "rust_analyzer",
         "tailwindcss",
         "html",
-        "templ",
         "zls"
       },
       handlers = {
@@ -72,11 +71,10 @@ return {
             })
           elseif server_name == "tailwindcss" then
             lspconfig.tailwindcss.setup({
-              filetypes = { "templ", "html", "go" },
+              filetypes = { "go" },
               settings = {
                 tailwindCSS = {
                   includeLanguages = {
-                    templ = "html",
                     go = "html"
                   },
                   experimental = {
