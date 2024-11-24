@@ -8,6 +8,7 @@ return {
         -- Conform will run multiple formatters sequentially
         go = { "gofumpt" },
         rust = { "rustfmt" },
+        sql = { "sql-formatter" },
         -- Use a sub-list to run only the first available formatter
         javascript = { { "prettierd", "prettier" } },
       },

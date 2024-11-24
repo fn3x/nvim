@@ -14,7 +14,15 @@ return {
     "hrsh7th/cmp-nvim-lsp-signature-help", -- Required
 
     -- Snippets
-    "L3MON4D3/LuaSnip",             -- Required
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      events = { "InsertEnter" },
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
+      build = "make install_jsregexp",
+    },
     "saadparwaiz1/cmp_luasnip",     -- Required
     "rafamadriz/friendly-snippets", -- Required
 
@@ -103,8 +111,12 @@ return {
       },
     })
 
-    require("luasnip.loaders.from_vscode").lazy_load()
     local luasnip = require("luasnip")
+    luasnip.config.set_config({
+      store_selection_keys = "<Tab>", -- visual selection trigger
+    })
+    require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/fn3x/snippets" })
 
     local cmp = require("cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -115,14 +127,14 @@ return {
       ["<C-y>"] = cmp.mapping.complete(),
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ["<Tab>"] = cmp.mapping(function (fallback)
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if luasnip.locally_jumpable(1) then
           luasnip.jump(1)
         else
           fallback()
         end
       end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function (fallback)
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
@@ -156,10 +168,16 @@ return {
       formatting = {
         fields = { "abbr", "kind", "menu" },
         format = lspkind.cmp_format({
-          preset = "codicons",
-          mode = "symbol_text",  -- show only symbol annotations
-          maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          mode = 'symbol', -- show only symbol annotations
+          maxwidth = {
+            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            -- can also be a function to dynamically calculate max width such as
+            -- menu = function() return math.floor(0.45 * vim.o.columns) end,
+            menu = 50,              -- leading text (labelDetails)
+            abbr = 50,              -- actual suggestion item
+          },
+          ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
         }),
       },
     })
@@ -215,7 +233,7 @@ return {
       end,
     })
 
-    local _border = "single"
+    local _border = "double"
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = _border,
