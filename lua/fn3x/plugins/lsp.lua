@@ -233,7 +233,7 @@ return {
       end,
     })
 
-    local _border = "double"
+    local _border = "rounded"
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = _border,
@@ -258,7 +258,9 @@ return {
           'compile_commands.json'
         ),
       },
-      lspconfig.rust_analyzer.setup {}
+      rust_analyzer = {},
+      ols = {},
+      zls = {}
     }
 
     for server, setup in pairs(servers) do
