@@ -1,6 +1,13 @@
 return {
   "neovim/nvim-lspconfig",
   events = { "InsertEnter" },
+  opts = function(_, opts)
+    opts.sources = opts.sources or {}
+    table.insert(opts.sources, {
+      name = "lazydev",
+      group_index = 0,   -- set group index to 0 to skip loading LuaLS completions
+    })
+  end,
   dependencies = {
     -- Language manager
     "williamboman/mason-lspconfig.nvim",
@@ -27,6 +34,17 @@ return {
     "rafamadriz/friendly-snippets", -- Required
 
     "onsails/lspkind.nvim",         -- Optional
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
   },
   config = function()
     -- enable mason and configure icons
