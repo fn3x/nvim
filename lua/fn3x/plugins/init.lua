@@ -39,7 +39,7 @@ return {
     opts = {},
     lazy = false,
     config = function ()
-      require("refactoring").setup()
+      require("refactoring").setup({})
     end
   },
   {

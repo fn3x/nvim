@@ -32,7 +32,7 @@ return {
         end
 
         local bufname = vim.api.nvim_buf_get_name(bufnr)
-        if bufname:match("/node_modules/") then
+        if string.match(bufname, "/node_modules/") then
           return
         end
 

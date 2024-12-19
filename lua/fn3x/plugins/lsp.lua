@@ -5,7 +5,7 @@ return {
     opts.sources = opts.sources or {}
     table.insert(opts.sources, {
       name = "lazydev",
-      group_index = 0,   -- set group index to 0 to skip loading LuaLS completions
+      group_index = 0, -- set group index to 0 to skip loading LuaLS completions
     })
   end,
   dependencies = {
@@ -59,11 +59,18 @@ return {
     })
 
     require("mason-lspconfig").setup({
+      automatic_installation = {
+        "ts_ls",
+        "gopls",
+        "lua_ls",
+        "tailwindcss",
+        "html",
+        "zls"
+      },
       ensure_installed = {
         "ts_ls",
         "gopls",
         "lua_ls",
-        "rust_analyzer",
         "tailwindcss",
         "html",
         "zls"
@@ -79,21 +86,14 @@ return {
                 },
               },
             })
-          elseif server_name == "lua_ls" then
-            lspconfig.lua_ls.setup({
-              settigns = {
-                Lua = {
-                  diagnostic = {
-                    globals = {
-                      "vim",
-                    },
-                  },
-                },
-              },
-            })
           elseif server_name == "ts_ls" then
             lspconfig.ts_ls.setup({
               filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+              settings = {
+                preferences = {
+                  quotePreference = "double",
+                },
+              },
             })
           elseif server_name == "tailwindcss" then
             lspconfig.tailwindcss.setup({
@@ -120,6 +120,8 @@ return {
             })
           elseif server_name == "ols" then
             lspconfig.ols.setup({})
+          elseif server_name == "zls" then
+            lspconfig.zls.setup({})
           else
             require("lspconfig")[server_name].setup({
               capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -134,7 +136,7 @@ return {
       store_selection_keys = "<Tab>", -- visual selection trigger
     })
     require("luasnip.loaders.from_vscode").lazy_load()
-    require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/fn3x/snippets" })
+    require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/lua/fn3x/snippets" } })
 
     local cmp = require("cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -184,6 +186,7 @@ return {
         { name = "buffer" },
       }),
       formatting = {
+        expandable_indicator = false,
         fields = { "abbr", "kind", "menu" },
         format = lspkind.cmp_format({
           mode = 'symbol', -- show only symbol annotations
@@ -240,8 +243,12 @@ return {
         end, opts)
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "[d", function ()
+            vim.diagnostic.jump({ count = 1 })
+        end, opts)
+        vim.keymap.set("n", "]d", function ()
+            vim.diagnostic.jump({ count = -1 })
+        end, opts)
         vim.keymap.set("n", "<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
@@ -252,20 +259,6 @@ return {
     })
 
     local _border = "rounded"
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = _border,
-      style = "minimal",
-      source = "always",
-      silent = true,
-    })
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = _border,
-      style = "minimal",
-      source = "always",
-      silent = true,
-    })
 
     local servers = {
       clangd = {},
@@ -290,7 +283,7 @@ return {
       float = {
         border = _border,
         style = "minimal",
-        source = "always",
+        source = true,
         header = "",
         prefix = "",
       },
