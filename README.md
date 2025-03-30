@@ -1,5 +1,5 @@
 ## DISCLAIMER
-## i am now using NixOS (btw), so i won't be maintaining lua-version of my neovim config
+## i am now using NixOS (btw), so i won't be maintaining lua-version of my neovim config. the nix-version you can find [here](https://github.com/fn3x/nix)
 
 # nvim
 My neovim config containing configured packages like treesitter, lsp, telescope, harpoon, etc.
