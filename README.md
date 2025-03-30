@@ -1,3 +1,6 @@
+## DISCLAIMER
+## i am now using NixOS (btw), so i won't be maintaining lua-version of my neovim config
+
 # nvim
 My neovim config containing configured packages like treesitter, lsp, telescope, harpoon, etc.
 
